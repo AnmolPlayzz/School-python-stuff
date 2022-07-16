@@ -5,7 +5,7 @@ print("Preffer entering larger number first\n")
 a=int(input("Enter first number:"))
 b=int(input("Enter second number:"))
 
-print("\nSlect an operation from the following:\n\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n\n")
+print("\nSelect an operation from the following:\n\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n\n")
 
 operator=input("Enter operator:")
 

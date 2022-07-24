@@ -1,2 +1,1 @@
-# School-python-stuff
-So, my school is teaching python, and this is the repo where I track all my school projects, each separated by different branches
+# 21 July 2022

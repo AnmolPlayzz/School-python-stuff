@@ -1,0 +1,11 @@
+s="Some random long string for me to test stuff"
+print(s[:])
+print(s[3:])
+print(s[:16])
+print(s[3:20])
+print(s[4:24:2])
+print(s[-1:])
+print(s[:-32])
+print(s[-3:-28])
+print(s[-2:-70:2])
+print(s[-2:-23:-2])

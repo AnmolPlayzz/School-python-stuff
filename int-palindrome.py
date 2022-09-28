@@ -1,7 +1,3 @@
-from curses.ascii import NL
-from re import A
-
-
 n=int(input("Enter number -> "))
 p=0
 c=n

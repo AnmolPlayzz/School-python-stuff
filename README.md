@@ -46,6 +46,7 @@
         for i in range(len(l)-1,-1,-1):
             n.append(l[i])
         print(n)
+        ```
     5. List reverse without a new list/functions
         ```py
         l=[1,2,3,4,5,6,7]

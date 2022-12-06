@@ -87,5 +87,20 @@
             l.update({h:k})
         print(l)
         ```
+    2. collect marks in a list and add them to a list and add it to a dictionary
+        ```py
+        d={}
+        n=int(input("Enter no. of entries -> "))
+        for i in range(n):
+            na=input("Enter name -> ")
+            for j in range(3):
+                mh=int(input("Maths -> "))
+                ph=int(input("Physics -> "))
+                ch=int(input("Chemistry -> "))
+                l=[mh,ph,ch]
+                break
+            d.update({na:l})
+        print(d)
+        ```
 
 Well, that's all I had.

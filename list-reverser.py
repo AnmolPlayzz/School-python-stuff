@@ -2,8 +2,5 @@
 l=[1,2,3,4,5,6,7]
 m=len(l)
 for i in range((m+1)//2):
-    a=l[m-1-i]
-    b=l[i]
-    l[m-1-i]=b
-    l[i]=a
+    l[i],l[m-1-i]=l[m-1-i],l[i]
 print(l)

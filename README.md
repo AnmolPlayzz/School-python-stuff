@@ -80,7 +80,7 @@
 - Dictionary 
     1. Update a dictionary
         ```py
-        l={,}
+        l={}
         n=int(input("Enter no. of terms to add -> "))
         for i in range(n):
             h=eval(input("Enter key -> "))

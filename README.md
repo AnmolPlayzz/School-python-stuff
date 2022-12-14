@@ -63,7 +63,8 @@
         l=[6,9,4,2,0]
         for i in range(len(l)):
             for j in range(i-1,-1,-1):
-                l[j],l[j+1]=l[j+1],l[j]
+                if l[j+1]<l[j]:
+                    l[j],l[j+1]=l[j+1],l[j]
         print(l)
         ```
     7. Count elements in a list
@@ -102,7 +103,7 @@
             d.update({na:l})
         print(d)
         ```
-- import statements
+- Modules
     1. Math
         ```py
         import math

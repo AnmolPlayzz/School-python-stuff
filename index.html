@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/default.min.css" />
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #fff;
+        color: #333;
+        padding: 1em;
+        transition: all 0.5s cubic-bezier(.77,0,.18,1); 
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1em;
+        position: fixed;
+        width: 40vw;
+        z-index: 200;
+        justify-self: center;
+        padding: 10px 20px;
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        box-shadow: #000000 0px 0px 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      h1 {
+        font-size: 1.2em;
+        margin: 0;
+      }
+
+      #toggle-dark-mode {
+        display: inline-block;
+        position: relative;
+        width: 60px;
+        height: 34px;
+        border-radius: 34px;
+        background-color: #333;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(.77,0,.18,1);
+      }
+
+      #toggle-dark-mode:before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        background-color: #fff;
+        transition: all 0.5s cubic-bezier(.77,0,.18,1);
+      }
+
+      .code-block {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.5s cubic-bezier(.77,0,.18,1);
+      }
+
+      .dark-mode {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .dark-mode #toggle-dark-mode {
+        background-color: #fff;
+      }
+
+      .dark-mode #toggle-dark-mode:before {
+        transform: translateX(26px);
+        background-color: #333;
+      }
+
+      .dark-mode pre {
+        background-color: #444;
+        color: #ddd;
+      }
+
+      .dark-mode .code-block {
+        filter: invert(1);
+      }
+
+      @media only screen and (max-width: 787px) {
+        .header{
+            width: 80vw;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>All term 2 programmes</h1>
+      <div id="toggle-dark-mode"></div>
+    </div>
+
+      <p style="padding-top: 60px;">or maybe, the ones I have</p>
+      <h3>Lists</h3>
+      <h4>1. Add items to list</h4>
+      <pre><code class="code-block language-python">l=[]
+n=int(input("Enter no. -> "))
+for i in range(n):
+    l.append(int(input("-> ")))</code></pre>
+      
+      <h4>2. Check if element exists in list</h4>
+      <pre><code class="code-block language-python">l=[]
+n=int(input("Enter no. -> "))
+for i in range(n):
+    l.append(int(input("-> ")))
+m=int(input("Enter number to search -> "))
+for j in range(len(l)):
+    if l[j]==m:
+        print(m,"is found.")
+        break
+    else:
+        continue</code></pre>
+      
+      <h4>3. Find minimum and maximum no. in a list</h4>
+      <pre><code class="code-block language-python">l=eval(input("Enter list -> "))
+maxm=0
+for i in l:
+    if i>maxm:
+        maxm=i
+minm=maxm
+for j in l:
+    if j<minm:
+        minm=j
+print("Maximum ->", maxm)
+print("Minimum ->", minm)</code></pre>
+      
+      <h4>4. List reverse using a new list</h4>
+      <pre><code class="code-block language-python">l=[1,2,3,4,5,6,7]
+n=[]
+for i in range(len(l)-1,-1,-1):
+    n.append(l[i])
+print(n)</code></pre>
+      
+      <h4>5. List reverse without a new list/functions</h4>
+      <pre><code class="code-block language-python">l=[1,2,3,4,5,6,7]
+m=len(l)
+for i in range((m+1)//2):
+    a=l[m-1-i]
+    b=l[i]
+    l[m-1-i]=b
+    l[i]=a
+print(l)</code></pre>
+      <h4>6. Bubble sorting</h4>
+      <pre><code class="code-block language-python">l=[6,9,4,2,0]
+for i in range(len(l)):
+    for j in range(i-1,-1,-1):
+        if l[j+1] < l[j]:
+            l[j],l[j+1]=l[j+1],l[j]
+print(l)</code></pre>
+      <h4>7. Count elements in a list</h4>
+      <pre><code class="code-block language-python">l=eval(input("Enter list -> "))
+n=int(input("Enter number -> "))
+c=0
+for i in l:
+    if n==i:
+        c+=1
+print(n,"occours",c,"times in",l)</code></pre>
+    <h3>Dictionary</h3>
+    <h4>1. Update a dictionary</h4>
+    <pre><code class="code-block language-python">l={}
+n=int(input("Enter no. of terms to add -> "))
+for i in range(n):
+    h=eval(input("Enter key -> "))
+    k=eval(input("Enter value -> "))
+    l.update({h:k})
+print(l)</code></pre>
+<h4>2. Collect marks in a list and add them to a dictionary</h4>
+<pre><code class="code-block language-python">d={}
+n=int(input("Enter no. of entries -> "))
+for i in range(n):
+    na=input("Enter name -> ")
+    for j in range(3):
+        mh=int(input("Maths -> "))
+        ph=int(input("Physics -> "))
+        ch=int(input("Chemistry -> "))
+        l=[mh,ph,ch]
+        break
+    d.update({na:l})
+print(d)
+</code></pre>
+    <h3>Modules</h3>
+    <h4>1. Math</h4>
+    <pre><code class="code-block language-python">import math
+print(math.sqrt(81))
+print(math.ceil(6.9))
+print(math.floor(5.9))
+print(math.e)
+print(math.pi)
+print(math.sin(math.pi/6))
+print(math.fabs(-69.420))
+print(math.fabs(-5))</code></pre>
+
+<p style="font-size: 12px; padding-top: 30px;">
+Made with HTML, CSS, JavaScript and ♥ by @AnmolPlayzz (GitHub)    
+</p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js"></script>
+    <script>
+        document.body.classList.add("dark-mode");
+        hljs.initHighlightingOnLoad();
+        const codeBlocks = document.querySelectorAll(".code-block");
+        const toggleDarkMode = document.getElementById("toggle-dark-mode");
+        toggleDarkMode.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
+
+  </body>
+</html>

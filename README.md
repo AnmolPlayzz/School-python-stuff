@@ -1,3 +1,6 @@
+<p align="center">
+<img width="200" src="https://cdn.discordapp.com/attachments/933681785479508008/1071482085472206968/webv3.png" align="center">
+</p>
 <h1 align="center">All term 2 programmes</h1>
 <p align="center">A website that lists all the programmes which were done in term 2 of my 2022-2023 session [Grade 11 CS]</p>
 

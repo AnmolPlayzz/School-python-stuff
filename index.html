@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>All term 2 programmes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css">
+    <link rel="icon" href="webv3.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js" integrity="sha512-fTTVSuY9tLP+l/6c6vWz7uAQqd1rq3Q/GyKBN2jOZvJSLC5RjggSdboIFL1ox09/Ezx/AKwcv/xnDeYN9+iDDA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+    </script>
     <style>
       body {
         font-family: sans-serif;
@@ -160,6 +165,9 @@
           color: rgb(0, 0, 0) !important;
       }
 
+      .runner {
+        margin: 7px 0px;
+      }
 
       @media only screen and (max-width: 787px) {
         .header{
@@ -172,13 +180,56 @@
 
     </style>
   </head>
-  <body>
+  <body onload="brython()">
+    <script type="text/python">
+      from browser import document, html, window
+      import sys
+      import traceback
+      from io import StringIO
+      import contextlib
+      
+      def exec_with_captured_stdout(code):
+          old_stdout = sys.stdout
+          sys.stdout = StringIO()
+          
+          try:
+              exec(code)
+          except Exception as e:
+              sys.stdout.write(traceback.format_exc())
+          captured_output = sys.stdout.getvalue()
+          sys.stdout.close()
+          sys.stdout = old_stdout
+      
+          print("StdOut:",captured_output)
+
+          global outp
+          outp = html.CODE(captured_output)
+          outp.classList=["code-block language-python hljs runner"]
+
+      
+      def run_in_browser(event, code_block):
+          exec_with_captured_stdout(code_block.text)
+          code_block.parentNode.insertBefore(outp, code_block.nextSibling.nextSibling.nextSibling)
+      
+      for code_block in document.select("code"):
+          run_btn = html.BUTTON("Run in browser")
+          run_btn.style = {"margin-left": "10px"}
+          run_btn.classList = ["run-btn copy-btn"]
+          run_btn.bind("click", lambda event, c=code_block: run_in_browser(event, c))
+          code_block.parentNode.insertBefore(run_btn, code_block.nextSibling)
+          
+
+      </script>
     <div class="header">
       <h1>All term 2 programmes</h1>
       <div id="toggle-dark-mode"></div>
     </div>
-
       <p style="padding-top: 60px;">or maybe, the ones I have</p>
+      <hr>
+      <h3>What the buttons do.</h3>
+      <p>Copy to clipboard: copy the code in the codeblock to clipboard</p>
+      <p>Run in Browser: run the code in browser and display output</p>
+      <hr>
       <h3>Lists</h3>
       <h4>1. Add items to list</h4>
       <pre><code class="code-block language-python">l=[]
@@ -300,9 +351,19 @@ Just a sidenote, I'm not an english nerd or something. Ignore my spelling mistak
 <br>
 Also, now that you're here, why not check out <a href="https://anmolplayzz.tk" target="_blank">my website 💀</a>. Yes this is an ad, shutup now.
 </p>
-
+<hr>
+<h2>Credits<span style="font-size: 12px;">(awesome 3rd party libs that made this website possible)</span></h2>
+<p style="font-size: 18px; padding-top: 10px;">
+<a href="https://highlightjs.org/" target="_blank">Highlight.js</a>: Highlighting code blocks/Syntax highlighting
+<br>
+<a href="https://brython.info/" target="_blank">Brython</a>: Browser based executer for python
+<br>
+<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>: Website hosting
+<br>
+</p>
+<hr>
 <p style="font-size: 15px; padding-top: 30px;">
-Made with HTML, CSS, JavaScript and ♥ by @AnmolPlayzz (GitHub)    
+Made with HTML, CSS, JavaScript, Python, Brython and ❤ by @AnmolPlayzz (GitHub)    
 </p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js"></script>
@@ -342,7 +403,7 @@ document.querySelectorAll("code").forEach(codeBlock => {
   });
   codeBlock.parentNode.insertBefore(copyBtn, codeBlock.nextSibling);
 });
-
     </script>
+    
   </body>
 </html>

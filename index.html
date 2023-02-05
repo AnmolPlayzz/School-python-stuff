@@ -21,6 +21,7 @@
       }
 
       pre {
+        display: block !important;
         border-radius: 5px;
       }
 
@@ -174,6 +175,21 @@
         margin: 7px 0px;
       }
 
+      .console {
+        width: 100%;
+        word-wrap: break-word;
+        background-color: #000000;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      .console > pre {
+        background-color: transparent;
+        white-space: pre-wrap; 
+        word-break: keep-all;
+        display: inline !important;
+        color: white;
+      }
+
       @media only screen and (max-width: 787px) {
         .header{
             width: 80vw;
@@ -240,7 +256,8 @@
       <pre><code class="code-block language-python">l=[]
 n=int(input("Enter no. -> "))
 for i in range(n):
-    l.append(int(input("-> ")))</code></pre>
+    l.append(int(input("-> ")))
+print(l)</code></pre>
       
       <h4>2. Check if element exists in list</h4>
       <pre><code class="code-block language-python">l=[]
@@ -334,8 +351,32 @@ print(math.sin(math.pi/6))
 print(math.fabs(-69.420))
 print(math.fabs(-5))</code></pre>
 <hr>
+<h2>Terminal</h2>
+<p>Yes, a working python terminal in your damn browser</p>
+  <div id="code" class="console" contenteditable></div>
+
+  <div id="content"></div>
+
+  <script type="text/python3">
+   from interpreter import Interpreter
+
+   # Start an interactive interpreter in textarea with id "code"
+   Interpreter("code")
+</script>
+<p>Having trouble using it? <a href="/terminal" target="_blank">Launch in seperate tab.</a></p>
+
+<hr>
 <h2>About this website<span style="font-size: 12px;">(and I know most of you don't give a fuck)</span></h2>
 <p style="font-size: 18px; padding-top: 10px;">
+Version 3.2<br>
+<br>
+<span style="font-size: 17px; font-weight: bolder;">What's new?<br></span>
+<span style="font-size: 15px">
+  1. In browser Python terminal<br>
+  2. Licensing info
+</span>
+<br>
+<br>
 This website is open source (like 99% of my code) so people can insult me about shitty code. Here's the repo if you want: <a href="https://github.com/AnmolPlayzz/School-python-stuff/tree/Term-2" target="_blank">https://github.com/AnmolPlayzz/School-python-stuff/tree/Term-2</a>
 <br>
 <br>
@@ -355,20 +396,23 @@ Just a sidenote, I'm not an english nerd or something. Ignore my spelling mistak
 <br>
 <br>
 Also, now that you're here, why not check out <a href="https://anmolplayzz.tk" target="_blank">my website 💀</a>. Yes this is an ad, shutup now.
+<br>
+<br>
+Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">The MIT License</a> // <a href="https://github.com/AnmolPlayzz/School-python-stuff/blob/Term-2/LICENSE" target="_blank">https://github.com/AnmolPlayzz/School-python-stuff/blob/Term-2/LICENSE</a>
 </p>
 <hr>
 <h2>Credits<span style="font-size: 12px;">(awesome 3rd party libs that made this website possible)</span></h2>
 <p style="font-size: 18px; padding-top: 10px;">
 <a href="https://highlightjs.org/" target="_blank">Highlight.js</a>: Highlighting code blocks/Syntax highlighting
 <br>
-<a href="https://brython.info/" target="_blank">Brython</a>: Browser based executer for python
+<a href="https://brython.info/" target="_blank">Brython</a>: Browser based executor for python
 <br>
 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>: Website hosting
 <br>
 </p>
 <hr>
 <p style="font-size: 15px; padding-top: 30px;">
-Made with HTML, CSS, JavaScript, Python, Brython and ❤ by @AnmolPlayzz (GitHub)    
+Made with HTML, CSS, JavaScript, Python, Brython and ❤ by <a href="https://github.com/AnmolPlayzz" target="_blank">@AnmolPlayzz (GitHub)</a>
 </p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js"></script>
@@ -408,6 +452,7 @@ document.querySelectorAll("code").forEach(codeBlock => {
   });
   codeBlock.parentNode.insertBefore(copyBtn, codeBlock.nextSibling);
 });
+
     </script>
     
   </body>

@@ -1,459 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>All term 2 programmes</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css">
-    <link rel="icon" href="webv3.png" type="image/x-icon">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js" integrity="sha512-fTTVSuY9tLP+l/6c6vWz7uAQqd1rq3Q/GyKBN2jOZvJSLC5RjggSdboIFL1ox09/Ezx/AKwcv/xnDeYN9+iDDA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
-    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deprecated</title>
     <style>
+      :root {
+          background-image: url(bg.svg);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: 48%;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
       body {
-        font-family: sans-serif;
-        background-color: #e6e6e6d5;
-        color: #333;
-        padding: 1em 25%;
-        transition: all 0.5s cubic-bezier(.77,0,.18,1); 
+          width: 90%;
+          background-color: transparent;
       }
-
-      pre {
-        display: block !important;
-        border-radius: 5px;
+      .container {
+          color: white;
+          font-family: 'Arial';
+          text-align: center;
+          padding: 15%;
       }
-
-      .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1em;
-        position: fixed;
-        width: 40vw;
-        z-index: 200;
-        justify-self: center;
+      .container h1 {
+        font-weight: bolder;
+        font-size: 40px;
+      }
+      .container a {
+        margin-top: 20px;
+        background: hsla(31, 100%, 50%, 1);
+        background: linear-gradient(135deg, hsla(31, 100%, 50%, 1) 0%, hsla(354, 55%, 40%, 1) 100%);
+        background: -moz-linear-gradient(135deg, hsla(31, 100%, 50%, 1) 0%, hsla(354, 55%, 40%, 1) 100%);
+        background: -webkit-linear-gradient(135deg, hsla(31, 100%, 50%, 1) 0%, hsla(354, 55%, 40%, 1) 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF8400", endColorstr="#A02E39", GradientType=1 );
         padding: 10px 20px;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-radius: 20px;
-        box-shadow: #000000 0px 0px 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: all 0.5s cubic-bezier(.77,0,.18,1);
-      }
-
-      a {
-        color: #0070ff;
-      }
-
-      h1 {
-        font-size: 1.2em;
-        margin: 0;
-      }
-
-      #toggle-dark-mode {
-        display: inline-block;
+        border-radius: 1vmax;
         position: relative;
-        width: 60px;
-        height: 34px;
-        border-radius: 34px;
-        background-color: #333;
-        cursor: pointer;
-        transition: all 0.5s cubic-bezier(.77,0,.18,1);
+        color: white;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        text-decoration: none;
       }
-
-      #toggle-dark-mode:before {
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 30px;
-        height: 30px;
-        border-radius: 30px;
-        background-color: #fff;
-        transition: all 0.5s cubic-bezier(.77,0,.18,1);
+      .container a:hover {
+        box-shadow: 1px 0px 20px #ff7300 ;
       }
-
-      .code-block {
-        background-color: #f5f5f5;
-        padding: 10px;
-        border-radius: 5px;
-        transition: all 0.5s cubic-bezier(.77,0,.18,1);
-        font-size: 16px;
-      }
-
-      .dark-mode {
-        background-color: #333;
-        color: #fff;
-      }
-
-      .dark-mode #toggle-dark-mode {
-        background-color: #fff;
-      }
-
-      .dark-mode #toggle-dark-mode:before {
-        transform: translateX(26px);
-        background-color: #333;
-      }
-
-      pre {
-        background-color: #c7c7c7;
-        color: #000000;
-      }
-
-      .dark-mode pre {
-        background-color: #444;
-        color: #ddd;
-      }
-
-      .dark-mode .code-block {
-        filter: invert(1);
-      }
-
-      .copy-btn {
-        border: 0;
-        background-color: #d9d9d9;
-        color: #333333;
-        padding: 7px 12px;
-        border-radius: 5px;
-        font-size: 15px;
-        cursor: pointer;
-        margin: 10px 0;
-        transition: all 0.3s ease-out;
-      }
-
-      .copy-btn:hover {
-        transform: scale(1.2);
-        box-shadow: #000000 0px 0px 10px;
-        filter: brightness(1);
-      }
-
-      .copy-btn:active {
-        transform: scale(1.1);
-        box-shadow: #000000 0px 0px 20px;
-        filter: brightness(1.3);
-      }
-
-      .dark-mode .copy-btn {
-        background-color: #333333;
-        color: #fff;
-      }
-
-      .code-block {
-        position: relative;
-      }
-
-      .code-block .copy-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(50%, -50%);
-      }
-
-      .alert {
-        left: 50%;
-        transform: translateX(-50%);
-        backdrop-filter: blur(10px);
-        text-align: center;
-        font-size: 20px;
-        padding:  20px 25px !important;
-      }
-
-      .light-mode .alert {
-          background-color: rgba(26, 26, 26, 0.798) !important;
-          color: rgb(255, 255, 255) !important;
-        }
-
-      .dark-mode .alert {
-          background-color: rgba(255, 255, 255, 0.819) !important;
-          color: rgb(0, 0, 0) !important;
-      }
-
-      .runner {
-        margin: 7px 0px;
-      }
-
-      .console {
-        width: 100%;
-        outline: 0;
-        border: 0;
-        border-radius: 6px;
-      }
-
-      @media only screen and (max-width: 787px) {
-        .header{
-            width: 80vw;
-        }
-        body {
-          padding: 1em;
-        }
-      }
-
+  
     </style>
-  </head>
-  <body onload="brython()">
-    <script type="text/python">
-      from browser import document, html, window
-      import sys
-      import traceback
-      from io import StringIO
-      import contextlib
-      
-      def exec_with_captured_stdout(code):
-          old_stdout = sys.stdout
-          sys.stdout = StringIO()
-          
-          try:
-              exec(code)
-          except Exception as e:
-              sys.stdout.write(traceback.format_exc())
-          captured_output = sys.stdout.getvalue()
-          sys.stdout.close()
-          sys.stdout = old_stdout
-      
-          print("StdOut:",captured_output)
-
-          global outp
-          outp = html.CODE(captured_output)
-          outp.classList=["code-block language-python hljs runner"]
-
-      
-      def run_in_browser(event, code_block):
-          exec_with_captured_stdout(code_block.text)
-          code_block.parentNode.insertBefore(outp, code_block.nextSibling.nextSibling.nextSibling)
-      
-      for code_block in document.select("code"):
-          run_btn = html.BUTTON("Run in browser")
-          run_btn.style = {"margin-left": "10px"}
-          run_btn.classList = ["run-btn copy-btn"]
-          run_btn.bind("click", lambda event, c=code_block: run_in_browser(event, c))
-          code_block.parentNode.insertBefore(run_btn, code_block.nextSibling)
-          
-
-      </script>
-    <div class="header">
-      <h1>All term 2 programmes</h1>
-      <div id="toggle-dark-mode"></div>
-    </div>
-      <p style="padding-top: 60px;">or maybe, the ones I have</p>
-      <hr>
-      <h3>What the buttons do.</h3>
-      <p>Copy to clipboard: copy the code in the codeblock to clipboard</p>
-      <p>Run in Browser: run the code in browser and display output</p>
-      <hr>
-      <h3>Lists</h3>
-      <h4>1. Add items to list</h4>
-      <pre><code class="code-block language-python">l=[]
-n=int(input("Enter no. -> "))
-for i in range(n):
-    l.append(int(input("-> ")))
-print(l)</code></pre>
-      
-      <h4>2. Check if element exists in list</h4>
-      <pre><code class="code-block language-python">l=[]
-n=int(input("Enter no. -> "))
-for i in range(n):
-    l.append(int(input("-> ")))
-m=int(input("Enter number to search -> "))
-for j in range(len(l)):
-    if l[j]==m:
-        print(m,"is found.")
-        break
-    else:
-        continue</code></pre>
-      
-      <h4>3. Find minimum and maximum no. in a list</h4>
-      <pre><code class="code-block language-python">l=eval(input("Enter list -> "))
-maxm=0
-for i in l:
-    if i>maxm:
-        maxm=i
-minm=maxm
-for j in l:
-    if j < minm:
-        minm=j
-print("Maximum ->", maxm)
-print("Minimum ->", minm)</code></pre>
-      
-      <h4>4. List reverse using a new list</h4>
-      <pre><code class="code-block language-python">l=[1,2,3,4,5,6,7]
-n=[]
-for i in range(len(l)-1,-1,-1):
-    n.append(l[i])
-print(n)</code></pre>
-      
-      <h4>5. List reverse without a new list/functions</h4>
-      <pre><code class="code-block language-python">l=[1,2,3,4,5,6,7]
-m=len(l)
-for i in range((m+1)//2):
-    a=l[m-1-i]
-    b=l[i]
-    l[m-1-i]=b
-    l[i]=a
-print(l)</code></pre>
-      <h4>6. Bubble sorting</h4>
-      <pre><code class="code-block language-python">l=[6,9,4,2,0]
-for i in range(len(l)):
-    for j in range(i-1,-1,-1):
-        if l[j+1] < l[j]:
-            l[j],l[j+1]=l[j+1],l[j]
-print(l)</code></pre>
-      <h4>7. Count elements in a list</h4>
-      <pre><code class="code-block language-python">l=eval(input("Enter list -> "))
-n=int(input("Enter number -> "))
-c=0
-for i in l:
-    if n==i:
-        c+=1
-print(n,"occours",c,"times in",l)</code></pre>
-    <h3>Dictionary</h3>
-    <h4>1. Update a dictionary</h4>
-    <pre><code class="code-block language-python">l={}
-n=int(input("Enter no. of terms to add -> "))
-for i in range(n):
-    h=eval(input("Enter key -> "))
-    k=eval(input("Enter value -> "))
-    l.update({h:k})
-print(l)</code></pre>
-<h4>2. Collect marks in a list and add them to a dictionary</h4>
-<pre><code class="code-block language-python">d={}
-n=int(input("Enter no. of entries -> "))
-for i in range(n):
-    na=input("Enter name -> ")
-    for j in range(3):
-        mh=int(input("Maths -> "))
-        ph=int(input("Physics -> "))
-        ch=int(input("Chemistry -> "))
-        l=[mh,ph,ch]
-        break
-    d.update({na:l})
-print(d)
-</code></pre>
-    <h3>Modules</h3>
-    <h4>1. Math</h4>
-    <pre><code class="code-block language-python">import math
-print(math.sqrt(81))
-print(math.ceil(6.9))
-print(math.floor(5.9))
-print(math.e)
-print(math.pi)
-print(math.sin(math.pi/6))
-print(math.fabs(-69.420))
-print(math.fabs(-5))</code></pre>
-<hr>
-<h2>Terminal</h2>
-<p>Yes, a working python terminal in your damn browser</p>
-<div>
-  <iframe id="code" src="terminal" class="console" contenteditable></iframe>
-</div>
-  <div id="content"></div>
-
-  <script type="text/python3">
-  from browser import window
-  window.scrollTo(0, 0);
-
-</script>
-<p>Having trouble using it? <a href="terminal" target="_blank">Launch in seperate tab.</a></p>
-
-<hr>
-<h2>About this website<span style="font-size: 12px;">(and I know most of you don't give a fuck)</span></h2>
-<p style="font-size: 18px; padding-top: 10px;">
-[Latest || 5 Feb 2023] Version 3.2.1<br>
-<br>
-<span style="font-size: 17px; font-weight: bolder;">What's new?<br></span>
-<span style="font-size: 15px">
-  Fixed several bugs. Thnx to big man @Xilzros#7551 on discord for reporting 'em.
-</span>
-<br>
-<br>
-[5 Feb 2023] Version 3.2.0<br>
-<br>
-<span style="font-size: 17px; font-weight: bolder;">What's new?<br></span>
-<span style="font-size: 15px">
-  1. In browser Python terminal<br>
-  2. Licensing info
-</span>
-<br>
-<br>
-This website is open source (like 99% of my code) so people can insult me about shitty code. Here's the repo if you want: <a href="https://github.com/AnmolPlayzz/School-python-stuff/tree/Term-2" target="_blank">https://github.com/AnmolPlayzz/School-python-stuff/tree/Term-2</a>
-<br>
-<br>
-Found a bug? <a href="https://github.com/AnmolPlayzz/School-python-stuff/tree/Term-2#found-a-bug" target="_blank">Read this.</a>
-<br>
-<br>
-Have a suggestion? You can tell me on whatever the fuck app you want to use, but I'm probably too lazy to implement it. So yeah, feel free to waste your energy!
-<br>
-<br>
-What did I use to make this website? As usual HTML (Hyper Text Markup Language), CSS (Cascading Style Sheets) and Javascript. I don't use frameworks cuz I don't want to be a cu*t and overcomplicate the code for such a simple website.
-<br>
-<br>
-More often or not, people ask me why did I make this? Well, figure that out youself mf. I ain't giving any explanations.
-<br>
-<br>
-Just a sidenote, I'm not an english nerd or something. Ignore my spelling mistakes. My brain ain't no grammerly or auto-correct. Basically, don't be grammar police.
-<br>
-<br>
-Also, now that you're here, why not check out <a href="https://anmolplayzz.tk" target="_blank">my website 💀</a>. Yes this is an ad, shutup now.
-<br>
-<br>
-Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">The MIT License</a> // <a href="https://github.com/AnmolPlayzz/School-python-stuff/blob/Term-2/LICENSE" target="_blank">https://github.com/AnmolPlayzz/School-python-stuff/blob/Term-2/LICENSE</a>
-</p>
-<hr>
-<h2>Credits<span style="font-size: 12px;">(awesome 3rd party libs that made this website possible)</span></h2>
-<p style="font-size: 18px; padding-top: 10px;">
-<a href="https://highlightjs.org/" target="_blank">Highlight.js</a>: Highlighting code blocks/Syntax highlighting
-<br>
-<a href="https://brython.info/" target="_blank">Brython</a>: Browser based executor for python
-<br>
-<a href="https://pages.github.com/" target="_blank">GitHub Pages</a>: Website hosting
-<br>
-</p>
-<hr>
-<p style="font-size: 15px; padding-top: 30px;">
-Made with HTML, CSS, JavaScript, Python, Brython and ❤ by <a href="https://github.com/AnmolPlayzz" target="_blank">@AnmolPlayzz (GitHub)</a>
-</p>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js"></script>
-    <script defer>
-        document.body.classList.add("dark-mode");
-        hljs.initHighlightingOnLoad();
-        const codeBlocks = document.querySelectorAll(".code-block");
-        const toggleDarkMode = document.getElementById("toggle-dark-mode");
-        toggleDarkMode.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-        });
-        var code = document.querySelector("code").textContent;
-document.querySelectorAll("code").forEach(codeBlock => {
-  var copyBtn = document.createElement("button");
-  copyBtn.innerHTML = "Copy to clipboard";
-  copyBtn.style.marginLeft = "10px";
-  copyBtn.classList.add("copy-btn")
-  copyBtn.addEventListener("click", function() {
-    navigator.clipboard.writeText(codeBlock.textContent).then(function() {
-      const alert = document.createElement('div');
-      alert.classList.add("alert")
-      alert.innerHTML = 'Copied to clipboard';
-      alert.style.position = 'fixed';
-      alert.style.bottom = '10px';
-      alert.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      alert.style.color = 'white';
-      alert.style.padding = '10px';
-      alert.style.borderRadius = '5px';
-      alert.style.zIndex = '9999';
-
-      document.body.appendChild(alert);
-
-     setTimeout(() => {
-       alert.remove();
-     }, 5000);
-    });
-  });
-  codeBlock.parentNode.insertBefore(copyBtn, codeBlock.nextSibling);
-});
-
-    </script>
-    
-  </body>
+</head>
+<body>
+    <main>
+        <div class="container">
+          <h1>Deprecated</h1>
+          <p>This website has been shifted to Netlify!</p>
+          <br>
+          <a href="https://term-2-programmes.netlify.app/" target="_blank">Take me there</a>
+        </div>
+    </main>
+</body>
 </html>

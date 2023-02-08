@@ -1,4 +1,4 @@
-# All term 2 programmes
+# All term 2 programs
 (at least the ones I have)
 
 ---

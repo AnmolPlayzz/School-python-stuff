@@ -12,6 +12,18 @@
     <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
     </script>
     <style>
+    :root {
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      }
+      :root:focus {
+        outline: none !important;
+      }
       body {
         font-family: sans-serif;
         background-color: #e6e6e6d5;
@@ -298,6 +310,7 @@
       <h3>What the buttons do.</h3>
       <p>Copy to clipboard: copy the code in the codeblock to clipboard</p>
       <p>Run in Browser: run the code in browser and display output</p>
+      <p>Edit before running: edit the code before running it in-browser</p>
       <hr>
       <h3>Lists</h3>
       <h4>1. Add items to list</h4>
@@ -416,7 +429,15 @@ print(math.fabs(-5))</code></pre>
 <hr>
 <h2>About this website<span style="font-size: 12px;">(and I know most of you don't give a fuck)</span></h2>
 <p style="font-size: 18px; padding-top: 10px;">
-[Latest || 8 Feb 2023] Version 3.3.0<br>
+[Latest || 8 Feb 2023] Version 3.3.1<br>
+<br>
+<span style="font-size: 17px; font-weight: bolder;">What's new?<br></span>
+<span style="font-size: 15px">
+  Minor fixes and remove that ugly piece of shit blue box you see when you click something on android/iOS. 
+</span>
+<br>
+<p style="font-size: 18px; padding-top: 10px;">
+[8 Feb 2023] Version 3.3.0<br>
 <br>
 <span style="font-size: 17px; font-weight: bolder;">What's new?<br></span>
 <span style="font-size: 15px">
